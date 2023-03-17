@@ -1,95 +1,99 @@
-#include "main.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include "main.h"
 
 /**
- * main - multiplies two positive numbers.
- * @argc: number of arguments
- * @argv: the values in each argc element
+ * is_digit - checks if a string contains a non-digit char
+ * @s: string to be evaluated
  *
- * Description: it's like infinite add but with multiplication
- * Return: print the result. return 0 if success
+ * Return: 0 if a non-digit is found, 1 otherwise
  */
-
-int main(int argc, char **argv)
+int is_digit(char *s)
 {
-	int size1 = 0;
-	int size2 = 0;
-	int product_size = 0;
-	int index = 0;
-	int tab = 0;
-	int j = 0;
-	int *product;
-	int __attribute__((unused)) overflow = 0;
-	
-	if (argc != 3)
-	{
-		printf("Error\n");
-		return (98);
-	}
+	int i = 0;
 
-	while (argv[1][size1])
+	while (s[i])
 	{
-		if (argv[1][size1] < '0' || argv[1][size1] > '9')
+		if (s[i] < '0' || s[i] > '9')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+/**
+ * _strlen - returns the length of a string
+ * @s: string to evaluate
+ *
+ * Return: the length of the string
+ */
+int _strlen(char *s)
+{
+	int i = 0;
+
+	while (s[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
+
+/**
+ * errors - handles errors for main
+ */
+void errors(void)
+{
+	printf("Error\n");
+	exit(98);
+}
+
+/**
+ * main - multiplies two positive numbers
+ * @argc: number of arguments
+ * @argv: array of arguments
+ *
+ * Return: always 0 (Success)
+ */
+int main(int argc, char *argv[])
+{
+	char *s1, *s2;
+	int len1, len2, len, i, carry, digit1, digit2, *result, a = 0;
+
+	s1 = argv[1], s2 = argv[2];
+	if (argc != 3 || !is_digit(s1) || !is_digit(s2))
+		errors();
+	len1 = _strlen(s1);
+	len2 = _strlen(s2);
+	len = len1 + len2 + 1;
+	result = malloc(sizeof(int) * len);
+	if (!result)
+		return (1);
+	for (i = 0; i <= len1 + len2; i++)
+		result[i] = 0;
+	for (len1 = len1 - 1; len1 >= 0; len1--)
+	{
+		digit1 = s1[len1] - '0';
+		carry = 0;
+		for (len2 = _strlen(s2) - 1; len2 >= 0; len2--)
 		{
-			printf("Error\n");
-			return (98);
+			digit2 = s2[len2] - '0';
+			carry += result[len1 + len2 + 1] + (digit1 * digit2);
+			result[len1 + len2 + 1] = carry % 10;
+			carry /= 10;
 		}
-
-		size1++;
+		if (carry > 0)
+			result[len1 + len2 + 1] += carry;
 	}
-
-	while (argv[2][size2])
+	for (i = 0; i < len - 1; i++)
 	{
-		if (argv[2][size2] < '0' || argv[2][size2] > '9')
-		{
-			printf("Error\n");
-			return (98);
-		}
-		size2++;
+		if (result[i])
+			a = 1;
+		if (a)
+			_putchar(result[i] + '0');
 	}
-
-	product_size = size1 + size2 + 1;
-	product = malloc(sizeof(int) * product_size);
-
-	if (!product)
-		return (98);
-
-	while (product_size >= 0)
-	{
-		product[product_size] = 0;
-		product_size--;
-	}
-
-	size1--;
-	size2--;
-
-	while (size2 >= 0)
-	{
-		index = tab;
-		for (j = size1; j >= 0; j--)
-		{
-			product[index] += (argv[1][j] - '0') * (argv[2][size2] - '0');
-			product[index + 1] += product[index] / 10;
-			product[index] %= 10;
-			index++;
-		}
-		size2--;
-		tab++;
-	}
-
-	product_size--;
-	
-	if (product_size == -1)
-		printf("0\n");
-	else
-	{
-		for (index = product_size; index >= 0; index--)
-
-			printf("%d", product[index]);
-		printf("\n");
-	}
-
-	free(product);
+	if (!a)
+		_putchar('0');
+	_putchar('\n');
+	free(result);
 	return (0);
 }
