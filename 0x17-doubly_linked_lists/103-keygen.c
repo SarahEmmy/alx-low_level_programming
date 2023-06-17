@@ -9,12 +9,24 @@
  *
  * Return: Always 0.
  */
-int main(int __attribute__((__unused__)) argc, char *argv[])
+int main(int argc, char *argv[])
 {
-	char password[7], *codex;
-	int len = strlen(argv[1]), i, tmp;
+	const char *codex = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
+	char password[7];
+	int len, i, tmp;
 
-	codex = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
+	if (argc != 2)
+	{
+		printf("Usage: %s <password_length>\n", argv[0]);
+		return 1;
+	}
+
+	len = strlen(argv[1]);
+	if (len <= 0 || len > 6)
+	{
+		printf("Password length should be between 1 and 6 characters.\n");
+		return 1;
+	}
 
 	tmp = (len ^ 59) & 63;
 	password[0] = codex[tmp];
@@ -48,6 +60,6 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	password[5] = codex[(tmp ^ 229) & 63];
 
 	password[6] = '\0';
-	printf("%s", password);
-	return (0);
+	printf("%s\n", password);
+	return 0;
 }
