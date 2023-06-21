@@ -3,26 +3,38 @@
 #include <stdlib.h>
 
 /**
- * main - check the code
+ * _putchar - Writes a character to the standard output
+ * @c: The character to be written
  *
- * Return: Always EXIT_SUCCESS.
+ * Return: On success, the character written.
+ * On error, -1 is returned,
+ * and errno is set appropriately.
  */
 int _putchar(char c)
 {
-	return putchar(c);
+
+	return (putchar(c));
 }
+
+/**
+ * main - Entry point of the program
+ *
+ * Return: Always EXIT_SUCCESS.
+ */
 int main(void)
 {
-	 char *str = "My Dyn Lib";
-	 int length;
+	char *str = "My Dyn Lib";
+	int length;
 
-	 length = _strlen(str);
-	 if (length >= 0) {
-		 printf("%d\n", length);
-		 return EXIT_SUCCESS;
-	 }
-	 else {
+	length = _strlen(str);
+	if (length >= 0)
+	{
+		printf("%d\n", length);
+		return (EXIT_SUCCESS);
+	}
+	else
+	{
 		 fprintf(stderr, "Error: Invalid string\n");
-		 return EXIT_FAILURE;
-	 }
+		return (EXIT_FAILURE);
+	}
 }
