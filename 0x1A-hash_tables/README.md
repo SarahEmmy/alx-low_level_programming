@@ -1,19 +1,27 @@
-0x0A. C - argc, argv
-Resources
-Read or watch:
+# 0x1A-hash_tables
 
-What is a HashTable Data Structure - Introduction to Hash Tables , Part 0
-Hash function
-Hash table
-All about hash tables
-why hash tables and not arrays
-Learning Objectives
-At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
+## Description
 
-General
-What is a hash function
-What makes a good hash function
-What is a hash table, how do they work and how to use them
-What is a collision and what are the main ways of dealing with collisions in the context of a hash table
-What are the advantages and drawbacks of using hash tables
-What are the most common use cases of hash tables
+This repository contains the implementation of hash tables. A hash table is a data structure that allows for efficient storage and retrieval of key-value pairs. The purpose of this project is to provide a working implementation of hash tables in [programming language].
+
+## Getting Started
+
+To get started with this project, follow the steps below:
+
+1. Clone the repository to your local machine.
+2. Navigate to the project directory.
+3. [Add any additional steps if necessary.]
+
+## Usage
+
+To use the hash tables implemented in this project, [provide instructions and examples on how to use the code]. This may include code snippets, function calls, or command-line examples.
+
+## Contributing
+
+Contributions to this project are welcome. To contribute, please follow the guidelines below:
+
+1. Fork the repository on GitHub.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and test them thoroughly.
+4. Commit your changes and push them to your forked repository.
+5. Submit a pull request.
