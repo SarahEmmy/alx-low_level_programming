@@ -15,10 +15,11 @@
  */
 typedef struct hash_node_s
 {
-    char *key;
-    char *value;
-    struct hash_node_s *next;
-} hash_node_t;
+	char *key;
+	char *value;
+	struct hash_node_s *next;
+}
+hash_node_t;
 
 /**
  * struct hash_table_s - Hash table data structure
@@ -30,9 +31,11 @@ typedef struct hash_node_s
  */
 typedef struct hash_table_s
 {
-    unsigned long int size;
-    hash_node_t **array;
-} hash_table_t;
+	unsigned long int size;
+	hash_node_t **array;
+}
+
+hash_table_t;
 
 /* Function Prototypes */
 
@@ -76,7 +79,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value);
  * @ht: The hash table.
  * @key: The key.
  *
- * Return: The value associated with the element, or NULL if key couldn't be found.
+ * Return: The value associated with the element,
+ * or NULL if key couldn't be found.
  */
 char *hash_table_get(const hash_table_t *ht, const char *key);
 
