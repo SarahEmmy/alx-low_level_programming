@@ -3,15 +3,21 @@
 
 
 def island_perimeter(grid):
-    """ method that returns the perimeter of the island
-    described in grid
+    """
+    Calculates the perimeter of the island described in the given grid.
+    
     Args:
-        grid(list): is a list of integers
-        where 1 represents land zone and 0 water
-    grid is rectancular and width and height don't exceed the 100
-    grid is completely sorrounded by water and there is one island
-    or nothing.
-    one cell of the grid is a square with side lenght 1
+        grid (list): A list of lists of integers representing the landscape,
+                     where 1 denotes land and 0 denotes water.
+                     
+    Returns:
+        int: The perimeter of the island.
+        
+    Constraints:
+        - The grid's width and height are both limited to a maximum of 100 cells.
+        - The grid is entirely surrounded by water.
+        - There exists either one island or none in the grid.
+        - Each cell in the grid is a square with a side length of 1.
     """
     lands = 0
     side = 0
