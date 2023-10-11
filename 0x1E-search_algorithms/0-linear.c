@@ -3,13 +3,14 @@
 int recurse_helper(int *arr, size_t size, int val, size_t idx);
 
 /**
- * linear_search - search for value in an integer array
- * @array: pointer to array of ints
- * @size: size of array
- * @value: value to locate
- *
- * Return: index of value; -1 if value not found
+ * linear_search - Search for a value in an integer array
+ * @array: Pointer to an array of integers
+ * @size: Size of the array
+ * @value: Value to locate
+ * Return: The index of the value if found, 
+ * or -1 if the value is not found.
  */
+
 int linear_search(int *array, size_t size, int value)
 {
 
